@@ -9,23 +9,18 @@ interface IProps {
 
 const Slider: FC<IProps> = ({ programs }) => {
   const sliderRef = useRef<HTMLDivElement>(null);
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(true); // permets de controller la visibilité du btn left de scrolling
 
   const slideLeft = () => {
-    if (sliderRef.current) {
-      let { scrollLeft, clientWidth } = sliderRef.current;
-      const nbreOfCard = Math.floor(clientWidth / 224);
-      sliderRef.current!.scrollLeft = scrollLeft - nbreOfCard * 224;
-    }
+    let { scrollLeft, clientWidth } = sliderRef.current!;
+    const nbreOfCard = Math.floor(clientWidth / 224); // Dans une app réelle, le 224 ne dois pas etre hardCoded, mais calculé automatiquement du with du programCard
+    sliderRef.current!.scrollLeft = scrollLeft - nbreOfCard * 224;
   };
 
   const slideRight = () => {
-    if (sliderRef.current) {
-      let { clientWidth } = sliderRef.current;
-      const nbreOfCard = Math.floor(clientWidth / 224);
-      sliderRef.current!.scrollLeft =
-        sliderRef.current!.scrollLeft + nbreOfCard * 224;
-    }
+    let { scrollLeft, clientWidth } = sliderRef.current!;
+    const nbreOfCard = Math.floor(clientWidth / 224); // Dans une app réelle, le 224 ne dois pas etre hardCoded, mais calculé automatiquement du with du programCard
+    sliderRef.current!.scrollLeft = scrollLeft + nbreOfCard * 224;
   };
 
   const handleScroll = () =>
@@ -35,13 +30,13 @@ const Slider: FC<IProps> = ({ programs }) => {
     <div className="relative flex items-center">
       <ChevronLeftIcon
         onClick={slideLeft}
-        className={`h-12 w-12 absolute bg-gray-800 rounded-full cursor-pointer z-10 left-0 -ml-7 transition duration-200 ease-out hover:scale-125 ${
+        className={`h-12 w-12 absolute bg-gray-800 rounded-full cursor-pointer z-10 left-0 -ml-7  duration-200 ease-out hover:scale-125 ${
           isHidden && "hidden"
         }`}
       />
       <div
         ref={sliderRef}
-        className="flex flex-row overflow-x-auto scroll-smooth space-x-6 scrollbar-hide pt-2"
+        className="flex overflow-x-auto scroll-smooth space-x-6 scrollbar-hide pt-2"
         onScroll={handleScroll}
       >
         {programs.map((program: Program) => (
@@ -54,7 +49,7 @@ const Slider: FC<IProps> = ({ programs }) => {
       </div>
       <ChevronRightIcon
         onClick={slideRight}
-        className="hidden sm:block h-12 w-12 absolute  bg-gray-800 rounded-full cursor-pointer z-10 right-0 -mr-7 transition duration-200 ease-out hover:scale-125"
+        className="hidden sm:block h-12 w-12 absolute  bg-gray-800 rounded-full cursor-pointer z-10 right-0 -mr-7 duration-200 ease-out hover:scale-125"
       />
     </div>
   );

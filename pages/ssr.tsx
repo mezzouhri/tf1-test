@@ -1,23 +1,22 @@
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { gql } from "@apollo/client";
-import client from "../src/apollo-client";
-import PROGRAMS from "../src/db";
 
-import { Program } from "../src/types/types";
+import client from "../src/apollo-client";
 import Slider from "../src/components/slider";
+import Layout from "../src/components/layout";
+import { Program } from "../src/types/types";
 
 interface IProps {
   programs: Program[];
 }
 
 const SSR: NextPage<IProps> = ({ programs }) => {
-  //console.log("programs", programs);
   return (
-    <div className=" bg-black text-white h-screen pt-32">
-      <div className="mx-auto max-w-7xl">
+    <Layout>
+      <div className="h-screen pt-32">
         <Slider programs={programs} />
       </div>
-    </div>
+    </Layout>
   );
 };
 
@@ -41,8 +40,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   return {
     props: {
-      programs: data.program.slice(0, 10),
-      //programs: [...PROGRAMS, ...PROGRAMS],
+      programs: data.program,
     },
   };
 };

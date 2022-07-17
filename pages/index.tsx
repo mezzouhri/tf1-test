@@ -1,11 +1,8 @@
-import type { GetStaticProps, NextPage } from "next";
-import { gql } from "@apollo/client";
-import client from "../src/apollo-client";
-import PROGRAMS from "../src/db";
-import { Program } from "../src/types/types";
-import Slider from "../src/components/slider";
-import Layout from "../src/components/layout";
 import Link from "next/link";
+import type { NextPage } from "next";
+
+import Layout from "../src/components/layout";
+import { Program } from "../src/types/types";
 
 interface IProps {
   programs: Program[];
@@ -21,10 +18,10 @@ const Home: NextPage<IProps> = ({ programs }) => {
         </span>
         <ul className="list-disc  text-xl font-bold space-y-1">
           <li className="hover:text-blue-400 mt-3">
-            <Link href="/ssr">en SSR</Link>
+            <Link href="/ssr">{`en SSR (Server Side Rendering)`}</Link>
           </li>
           <li className="hover:text-blue-400">
-            <Link href="/ssg">en SSG</Link>
+            <Link href="/ssg">{`en SSG (Static Site Generation)`}</Link>
           </li>
         </ul>
       </div>

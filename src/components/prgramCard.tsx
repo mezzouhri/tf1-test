@@ -11,6 +11,7 @@ interface IProps {
 const ProgramCard: FC<IProps> = ({ name, backgroundImage }) => {
   return (
     <div className="h-[297px] w-[200px] flex flex-col cursor-pointer group">
+      {/* une autre maniere d'écrire h-[297px] est de rajouter ce with dans le fichier de conf de TailwindCSS*/}
       <div className="relative h-[266px] w-[200px] rounded-lg transition duration-200 ease-out hover:scale-105">
         <Image
           className="rounded-lg"
@@ -20,7 +21,7 @@ const ProgramCard: FC<IProps> = ({ name, backgroundImage }) => {
           height={266}
         />
         <div className="absolute hidden group-hover:block bottom-0 right-0  bg-opacity-70 bg-black rounded-lg mr-1 mb-1 group-custom">
-          <div className="flex justify-center items-center p-1 group-custom-hover:grow ">
+          <div className="flex justify-center items-center p-1 ">
             <PlusIcon className="h-6 w-6" />
             <span className="hidden group-custom-hover:block text-xs">
               Ajouter à ma liste
