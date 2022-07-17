@@ -7,6 +7,7 @@ Concernant les technologies utilisées, j'ai gardé toute la stack utilisé par 
 ## Le temps estimé à passer sur ce test est d’environ 1h30
 
 le temps passé sur l'exercice est environ 4 heures (je me suis permets de cloner le slider utilisé sur le site web de [TF1](https://www.tf1.fr/).
+
 la raison pour laquelle j'ai choisi du cloner le slider du TF1 au lieu de refaire ce qui était donné sur Figma est que l'exercice ne précise en aucun cas le travail demandé, je ne savais pas est ce que je devais juste refaire le design du Figma ou y rajouter du code JS pour qu'il soit fonctionnel.
 
 ## Lister l’ensemble des questions que vous avez sur des spécifications manquantes.
